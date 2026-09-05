@@ -1,0 +1,8 @@
+version: '2.40'
+
+services:
+  meu_cpp_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cpp-producao
