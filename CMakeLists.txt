@@ -23,7 +23,6 @@ FetchContent_Declare(
     GIT_TAG 0.8.2
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
-    FIND_PACKAGE_ARGS NAMES xtl CONFIG
 )
 FetchContent_Declare(
     xtensor
@@ -31,7 +30,14 @@ FetchContent_Declare(
     GIT_TAG 0.27.1
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
-    FIND_PACKAGE_ARGS NAMES xtensor CONFIG
+)
+FetchContent_Declare(
+    xtensor-blas
+    GIT_REPOSITORY https://github.com/xtensor-stack/xtensor-blas.git
+    GIT_TAG 0.23.0
+    GIT_SHALLOW TRUE
+    GIT_PROGRESS TRUE
+    FIND_PACKAGE_ARGS NAMES xtensor-blas CONFIG
 )
 
 set(BUILD_TESTING OFF)
@@ -43,10 +49,10 @@ set(EIGEN_BUILD_DOC OFF)
 list(POP_BACK CMAKE_MESSAGE_INDENT)
 message(CHECK_PASS "FETCHED")
 
-FetchContent_MakeAvailable(Eigen3 xtl xtensor)
+FetchContent_MakeAvailable(Eigen3 xtl xtensor xtensor-blas)
 
 add_executable(EigenMatrizes src/EigenMatrizes.cpp)
 target_link_libraries(EigenMatrizes PRIVATE Eigen3::Eigen)
 
 add_executable(XTensorMatrizes src/XTensorMatrizes.cpp)
-target_link_libraries(XTensorMatrizes PRIVATE xtensor)
+target_link_libraries(XTensorMatrizes PRIVATE xtensor xtensor-blas)
