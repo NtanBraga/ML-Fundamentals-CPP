@@ -15,7 +15,6 @@ FetchContent_Declare(
     GIT_TAG 5.0.1
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
-    FIND_PACKAGE_ARGS NAMES Eigen3 CONFIG
 )
 FetchContent_Declare(
     xtl
@@ -37,8 +36,15 @@ FetchContent_Declare(
     GIT_TAG 0.23.0
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
-    FIND_PACKAGE_ARGS NAMES xtensor-blas CONFIG
 )
+FetchContent_Declare(
+    blaze
+    GIT_REPOSITORY https://bitbucket.org/blaze-lib/blaze.git
+    GIT_TAG v3.8.2
+    GIT_SHALLOW TRUE
+    GIT_PROGRESS TRUE
+)
+
 
 set(BUILD_TESTING OFF)
 set(EIGEN_BUILD_TESTING OFF)
@@ -49,10 +55,13 @@ set(EIGEN_BUILD_DOC OFF)
 list(POP_BACK CMAKE_MESSAGE_INDENT)
 message(CHECK_PASS "FETCHED")
 
-FetchContent_MakeAvailable(Eigen3 xtl xtensor xtensor-blas)
+FetchContent_MakeAvailable(Eigen3 xtl xtensor xtensor-blas blaze)
 
 add_executable(EigenMatrizes src/EigenMatrizes.cpp)
 target_link_libraries(EigenMatrizes PRIVATE Eigen3::Eigen)
 
 add_executable(XTensorMatrizes src/XTensorMatrizes.cpp)
 target_link_libraries(XTensorMatrizes PRIVATE xtensor xtensor-blas)
+
+add_executable(Blaze src/Blaze.cpp)
+target_link_libraries(Blaze PRIVATE blaze)
