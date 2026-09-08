@@ -45,7 +45,6 @@ FetchContent_Declare(
     GIT_PROGRESS TRUE
 )
 
-
 set(BUILD_TESTING OFF)
 set(EIGEN_BUILD_TESTING OFF)
 set(EIGEN_MPL2_ONLY ON)
@@ -57,6 +56,12 @@ message(CHECK_PASS "FETCHED")
 
 FetchContent_MakeAvailable(Eigen3 xtl xtensor xtensor-blas blaze)
 
+#https://github.com/arrayfire/arrayfire/wiki/Build-Instructions-for-Linux#installing-arrayfire
+
+#ArrayFire muito pesado para ser usado fetchcontent
+find_package(ArrayFire REQUIRED)
+
+
 add_executable(EigenMatrizes src/EigenMatrizes.cpp)
 target_link_libraries(EigenMatrizes PRIVATE Eigen3::Eigen)
 
@@ -65,3 +70,6 @@ target_link_libraries(XTensorMatrizes PRIVATE xtensor xtensor-blas)
 
 add_executable(Blaze src/Blaze.cpp)
 target_link_libraries(Blaze PRIVATE blaze)
+
+add_executable(ArrayFire src/ArrayFire.cpp)
+target_link_libraries(ArrayFire PRIVATE ArrayFire::af)

@@ -62,7 +62,11 @@ int main(){
 
     blaze::CustomMatrix<float,blaze::unaligned,blaze::unpadded, blaze::rowMajor> m2(mdata.data(), 3UL,3UL);
 
-
+    cout << "Memoria de vetor standard:" << &data << endl;
+    cout << "Memoria de vetor blaze:" << &v2 << endl;
+    cout << "Memoria de matriz standard:" << &mdata << endl;
+    cout << "Memoria de matriz blaze:" << &m2 << endl;
+    
     cout << "Modificar vetor standard para vetor blaze: \n" << v2 << endl;
     cout << "Modificar vetor standard para matriz blaze: \n" << m2 << endl;
 
