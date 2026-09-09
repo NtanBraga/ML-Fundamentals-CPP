@@ -44,6 +44,13 @@ FetchContent_Declare(
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
 )
+FetchContent_Declare(
+    dlib
+    GIT_REPOSITORY https://github.com/davisking/dlib.git
+    GIT_TAG v20.0.1
+    GIT_SHALLOW TRUE
+    GIT_PROGRESS TRUE
+)
 
 set(BUILD_TESTING OFF)
 set(EIGEN_BUILD_TESTING OFF)
@@ -54,7 +61,7 @@ set(EIGEN_BUILD_DOC OFF)
 list(POP_BACK CMAKE_MESSAGE_INDENT)
 message(CHECK_PASS "FETCHED")
 
-FetchContent_MakeAvailable(Eigen3 xtl xtensor xtensor-blas blaze)
+FetchContent_MakeAvailable(Eigen3 xtl xtensor xtensor-blas blaze dlib)
 
 #https://github.com/arrayfire/arrayfire/wiki/Build-Instructions-for-Linux#installing-arrayfire
 
@@ -73,3 +80,6 @@ target_link_libraries(Blaze PRIVATE blaze)
 
 add_executable(ArrayFire src/ArrayFire.cpp)
 target_link_libraries(ArrayFire PRIVATE ArrayFire::af)
+
+add_executable(Dlib src/Dlib.cpp)
+target_link_libraries(Dlib PRIVATE dlib)
