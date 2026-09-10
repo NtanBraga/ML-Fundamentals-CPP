@@ -79,12 +79,5 @@ int main(){
 
     cout << "incrementar parte da matrix: \n" << result4 << endl;
 
-    int num1 = 1;
-    int num2 = 2;
-
-    int num3 = num1 + num2;
-
-    cout << num3;
-
     return 0;
 }

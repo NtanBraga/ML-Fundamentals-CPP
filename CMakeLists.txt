@@ -77,17 +77,17 @@ FetchContent_MakeAvailable(Eigen3 xtl xtensor xtensor-blas blaze dlib)
 find_package(ArrayFire REQUIRED)
 
 
-add_executable(EigenMatrizes src/EigenMatrizes.cpp)
+add_executable(EigenMatrizes src/matrizes/EigenMatrizes.cpp)
 target_link_libraries(EigenMatrizes PRIVATE Eigen3::Eigen)
 
-add_executable(XTensorMatrizes src/XTensorMatrizes.cpp)
+add_executable(XTensorMatrizes src/matrizes/XTensorMatrizes.cpp)
 target_link_libraries(XTensorMatrizes PRIVATE xtensor xtensor-blas)
 
-add_executable(Blaze src/Blaze.cpp)
-target_link_libraries(Blaze PRIVATE blaze)
+add_executable(BlazeMatrizes src/matrizes/BlazeMatrizes.cpp)
+target_link_libraries(BlazeMatrizes PRIVATE blaze)
 
-add_executable(ArrayFire src/ArrayFire.cpp)
-target_link_libraries(ArrayFire PRIVATE ArrayFire::af)
+add_executable(ArrayFireMatrizes src/matrizes/ArrayFireMatrizes.cpp)
+target_link_libraries(ArrayFireMatrizes PRIVATE ArrayFire::af)
 
-add_executable(Dlib src/Dlib.cpp)
-target_link_libraries(Dlib PRIVATE dlib)
+add_executable(DlibMatrizes src/matrizes/DlibMatrizes.cpp)
+target_link_libraries(DlibMatrizes PRIVATE dlib)
