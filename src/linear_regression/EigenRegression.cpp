@@ -12,7 +12,7 @@ int main(){
     int n = 100000;
 
     //Dados carregados em matrizes x e y
-    Matrix x(n,1);
+    Matrix x(n,2);
     Matrix y(n,1);
 
     //Metodo que utiliza algoritmo GD

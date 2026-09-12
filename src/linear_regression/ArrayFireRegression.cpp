@@ -31,15 +31,18 @@ int main(){
     for (int i = 0; i < n_iter; ++i){
         cout << "iteration " << i << ":\n";
 
+        //captura as linhas da matriz(dados de amostra)
+        int n = x.dims(0);
+
         //get cost
         auto h = predict(x, train_weights);
         auto diff = (y- h);
-        auto j = af::sum(diff * diff) / i;
+        auto j = af::sum(diff * diff) / n;
         af_print(j);
 
         //find gradient cost
-        auto dm = (-2.f / i) * af::sum(x.col(i) * diff);
-        auto dc = (-2.f / i) * af::sum(diff);
+        auto dm = (-2.f / n) * af::sum(x.col(1) * diff);
+        auto dc = (-2.f / n) * af::sum(diff);
         auto dj = af::join(1, dc, dm);
 
         //update via gradient descent

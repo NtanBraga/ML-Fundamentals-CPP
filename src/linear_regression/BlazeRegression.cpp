@@ -23,11 +23,10 @@ int main(){
 
     //coefficients for making predictions on data
 
-    blaze::StaticMatrix<float,2UL,3UL> new_x = {{1,2,3}, {1,2,3}};
+    blaze::StaticMatrix<float,2UL,2UL> new_x = {{1,2,3}, {1,2,3}};
 
     auto line_coeffs = blaze::expand(blaze::row<0UL>(blaze::trans(beta)), new_x.rows());
-    auto new_y = new_x % line_coeffs;
-
+    auto new_y = new_x * line_coeffs;
 
     return 0;
 }

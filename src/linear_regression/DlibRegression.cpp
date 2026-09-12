@@ -20,7 +20,7 @@ int main(){
 
     //for new x input, we can predict new y values
     std::vector<matrix<double>> new_x;
-    for(auto& v : x){
+    for(auto& v : new_x){
         auto prediction = df(v);
         std::cout << "prediction: " << prediction << std::endl;
     }  
