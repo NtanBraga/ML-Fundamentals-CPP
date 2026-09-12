@@ -77,6 +77,8 @@ FetchContent_MakeAvailable(Eigen3 xtl xtensor xtensor-blas blaze dlib)
 find_package(ArrayFire REQUIRED)
 
 
+#MATRIZES
+
 add_executable(EigenMatrizes src/matrizes/EigenMatrizes.cpp)
 target_link_libraries(EigenMatrizes PRIVATE Eigen3::Eigen)
 
@@ -91,3 +93,18 @@ target_link_libraries(ArrayFireMatrizes PRIVATE ArrayFire::af)
 
 add_executable(DlibMatrizes src/matrizes/DlibMatrizes.cpp)
 target_link_libraries(DlibMatrizes PRIVATE dlib)
+
+
+#REGRESSÃO LINEAR
+
+add_executable(EigenRegression src/linear_regression/EigenRegression.cpp)
+target_link_libraries(EigenRegression PRIVATE Eigen3::Eigen)
+
+add_executable(BlazeRegression src/linear_regression/BlazeRegression.cpp)
+target_link_libraries(BlazeRegression PRIVATE blaze)
+
+add_executable(ArrayFireRegression src/linear_regression/ArrayFireRegression.cpp)
+target_link_libraries(ArrayFireRegression PRIVATE ArrayFire::af)
+
+add_executable(DlibRegression src/linear_regression/DlibRegression.cpp)
+target_link_libraries(DlibRegression PRIVATE dlib)
